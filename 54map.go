@@ -45,4 +45,24 @@ func main() {
 		fmt.Println("操作的key不存在，获取到的是零值")
 	}
 
+	//	 map3
+	fmt.Println("\n ==>mp3取值 ")
+	map3["news"] = 900
+	v3, ok3 := map3["news"]
+
+	if ok3 == true {
+		fmt.Println("v3值:", v3)
+	} else {
+		fmt.Println("v3操作的key不存在，获取到的是零值")
+	}
+
+	// 5 修改数据
+
+	// 6 删除数据
+	fmt.Println("\n ==>mp3 删除 ")
+
+	fmt.Println("删除前", map3["news"])
+	delete(map3, "news")
+	fmt.Println("删除后", map3["news"])
+
 }
