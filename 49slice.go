@@ -2,12 +2,7 @@ package main
 
 import "fmt"
 
-func p() {
-	fmt.Println("\n ===>")
-}
-
 func main() {
-
 	p()
 
 	// 另外数组定义
