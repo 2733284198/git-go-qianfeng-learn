@@ -1,38 +1,13 @@
 package main
 
-import "github.com/kataras/iris/v12"
+import "github.com/kataras/iris"
 
 func main() {
 	app := iris.New()
 
-	booksAPI := app.Party("/books")
-	{
-		booksAPI.Use(iris.Compression)
+	app.Get("/hello", func(context iris.Context) {
+		_, _ = context.WriteString("hello")
+	})
 
-		// GET: http://localhost:8080/books
-		booksAPI.Get("/", list)
-		// POST: http://localhost:8080/books
-		//booksAPI.Post("/", create)
-	}
-
-	app.Listen(":8080")
-}
-
-// Book example.
-type Book struct {
-	Title string `json:"title"`
-}
-
-func list(ctx iris.Context) {
-	books := []Book{
-		{"Mastering Concurrency in Go"},
-		{"Go Design Patterns"},
-		{"Black Hat Go"},
-	}
-
-	ctx.JSON(books)
-	// TIP: negotiate the response between server's prioritizes
-	// and client's requirements, instead of ctx.JSON:
-	// ctx.Negotiation().JSON().MsgPack().Protobuf()
-	// ctx.Negotiate(books)
+	_ = app.Listen(":8080")
 }
